@@ -4,7 +4,7 @@
 class algoTesting
 {
   private:
-
+    int h;
   public:
     algoTesting();
 };
