@@ -33,7 +33,7 @@ testResults algoTesting::runTest(short algo, short fillType, int n)
       break;
 
     case k_MERGESORT:
-      test.mergeSort();
+      test.mergeSort(0, test.get_size());
       break;
 
     default:

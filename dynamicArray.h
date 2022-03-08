@@ -61,7 +61,7 @@ class dynamicArray
     void add(T x);
 
     void heapSort();
-    void mergeSort();
+    void mergeSort(int start, int end);
 
     void fillRandom();
     void fillAscending();

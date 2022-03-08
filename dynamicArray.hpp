@@ -36,8 +36,16 @@ void dynamicArray<T>::heapSort()
 }
 
 template <typename T>
-void dynamicArray<T>::mergeSort()
+void dynamicArray<T>::mergeSort(int start, int end)
 {
+  //Check against single element list
+  if(end - start + 1 == 1)
+    return;
+
+  int half = (start + end) / 2;
+  cout << "Halfway point: "<< half << endl;
+  mergeSort(start, half);
+  mergeSort(half + 1, end);
   return;
 }
 
