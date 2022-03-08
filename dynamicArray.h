@@ -2,6 +2,7 @@
 #define DYNAMICARRAY_H
 
 #include <iostream>
+#include <stdlib>
 using namespace std;
 
 //Forward Declaration
@@ -20,17 +21,21 @@ class dynamicArray
     int m_max;
     int m_size;
     int m_swaps;
+    float m_tmsec;
 
     void grow();
+
+    void merge();
   public:
 
     ///////////////////
     ////   Big 3   ////
     ///////////////////
 
-    dynamicArray(): m_max(4), m_size(0), m_swaps(0) { m_data = new T[m_max]; };
+    dynamicArray(): m_max(4), m_size(0), m_swaps(0), m_tmsec(0)
+                    { m_data = new T[m_max]; };
 
-    dynamicArray(int max): m_max(max), m_size(0), m_swaps(0)
+    dynamicArray(int max): m_max(max), m_size(0), m_swaps(0), m_tmsec(0)
     {
       //Only allow positive sizes
       assert(m_max > 0 && "\nERROR: array created with nonpositive number.");
@@ -57,8 +62,10 @@ class dynamicArray
 
     void heapSort();
     void mergeSort();
-    void merge();
 
+    void fillRandom();
+    void fillAscending();
+    void fillDescending();
     ////////////////////////
     ////   Print Data   ////
     ////////////////////////

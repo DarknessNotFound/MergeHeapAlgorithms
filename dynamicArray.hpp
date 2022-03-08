@@ -13,6 +13,12 @@ void dynamicArray<T>::grow()
 }
 
 template <typename T>
+void dynamicArray<T>::merge()
+{
+  return;
+}
+
+template <typename T>
 void dynamicArray<T>::add(T x)
 {
   if(m_size == m_max)
@@ -22,6 +28,19 @@ void dynamicArray<T>::add(T x)
   m_size++;
   return;
 }
+
+template <typename T>
+void dynamicArray<T>::heapSort()
+{
+  return;
+}
+
+template <typename T>
+void dynamicArray<T>::mergeSort()
+{
+  return;
+}
+
 
 template <typename T>
 void dynamicArray<T>::print()
