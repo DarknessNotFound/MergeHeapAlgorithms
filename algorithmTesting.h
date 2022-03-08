@@ -2,6 +2,8 @@
 #define ALGORITHMTESTING_H
 
 #include "algorithmDict.h"
+#include "dynamicArray.h"
+
 
 struct testResults
 {
@@ -12,15 +14,17 @@ struct testResults
   float m_tmsec;
 };
 
+ostream& operator << (ostream& os, const testResults& in);
+
 class algoTesting
 {
   private:
-
+    dynamicArray<testResults> testHis; //Record of Test History
   public:
-    algoTesting();
 
     testResults runTest(short algo, short fillType, int n);
 
+    void printTestHistory();
 };
 
 #include "algorithmTesting.hpp"

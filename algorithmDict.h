@@ -1,8 +1,10 @@
 #ifndef ALGORITHMDICT_H
 #define ALGORITHMDICT_H
 
-short k_HEAPSORT = 0;
-short k_MERGESORT = 1;
+using namespace std;
+
+const short k_HEAPSORT = 0;
+const short k_MERGESORT = 1;
 
 string getAlgorithmName(short key)
 {
@@ -18,16 +20,16 @@ string getAlgorithmName(short key)
       break;
 
     default:
-      name = "\tERROR: Name not found\t"
+      name = "\tERROR: Name not found\t";
 
   }
 
   return name;
 }
 
-short k_RANDOM = 0;
-short k_ASCENDING = 1;
-short k_DESCENDING = 2;
+const short k_RANDOM = 0;
+const short k_ASCENDING = 1;
+const short k_DESCENDING = 2;
 
 string getFillType(short key)
 {
@@ -47,7 +49,7 @@ string getFillType(short key)
       break;
 
     default:
-      name = "\tERROR: Name not found\t"
+      name = "\tERROR: Name not found\t";
 
   }
 

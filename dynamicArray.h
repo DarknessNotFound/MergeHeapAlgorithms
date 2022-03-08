@@ -2,7 +2,6 @@
 #define DYNAMICARRAY_H
 
 #include <iostream>
-#include <stdlib>
 using namespace std;
 
 //Forward Declaration
@@ -52,6 +51,7 @@ class dynamicArray
     int get_max() {return m_max;};
     int get_size() {return m_size;};
     int get_swaps() {return m_swaps;};
+    float get_tmsec() {return m_tmsec;};
 
 
     ///////////////////////////////
@@ -64,8 +64,8 @@ class dynamicArray
     void mergeSort();
 
     void fillRandom();
-    void fillAscending();
-    void fillDescending();
+    void fillAscending(T start);
+    void fillDescending(T start);
     ////////////////////////
     ////   Print Data   ////
     ////////////////////////
