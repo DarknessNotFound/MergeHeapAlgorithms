@@ -15,11 +15,11 @@ testResults algoTesting::runTest(short algo, short fillType, int n)
       break;
 
     case k_ASCENDING:
-      test.fillAscending(0);
+      test.fillAscending();
       break;
 
     case k_DESCENDING:
-      test.fillDescending(0);
+      test.fillDescending();
       break;
 
     default:

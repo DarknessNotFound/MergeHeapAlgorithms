@@ -44,24 +44,32 @@ void dynamicArray<T>::mergeSort()
 template <typename T>
 void dynamicArray<T>::fillRandom()
 {
+  for(int i = m_size; i < m_max; i++)
+    add(rand() % 100);
   return;
 }
 
 template <typename T>
-void dynamicArray<T>::fillAscending(T start)
+void dynamicArray<T>::fillAscending()
 {
-  T obj = start;
+  int num = 0;
   for(int i = m_size; i < m_max; i++)
   {
-    add(obj);
-    obj++;
+    add(num);
+    num++;
   }
   return;
 }
 
 template <typename T>
-void dynamicArray<T>::fillDescending(T start)
+void dynamicArray<T>::fillDescending()
 {
+  int num = m_max-m_size-1;
+  for(int i = m_size; i < m_max; i++)
+  {
+    add(num);
+    num--;
+  }
   return;
 }
 

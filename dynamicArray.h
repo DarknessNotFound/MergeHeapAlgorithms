@@ -64,8 +64,8 @@ class dynamicArray
     void mergeSort();
 
     void fillRandom();
-    void fillAscending(T start);
-    void fillDescending(T start);
+    void fillAscending();
+    void fillDescending();
     ////////////////////////
     ////   Print Data   ////
     ////////////////////////
