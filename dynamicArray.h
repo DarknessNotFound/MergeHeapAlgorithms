@@ -24,7 +24,7 @@ class dynamicArray
 
     void grow();
 
-    void merge();
+    void merge(int start, int mid, int end);
   public:
 
     ///////////////////
@@ -48,6 +48,7 @@ class dynamicArray
     ////   Get Functions   ////
     ///////////////////////////
 
+    int get_data(int i) {return m_data[i];};
     int get_max() {return m_max;};
     int get_size() {return m_size;};
     int get_swaps() {return m_swaps;};

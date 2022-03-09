@@ -8,8 +8,9 @@ int main()
 {
   dynamicArray<int> g(10);
   g.fillRandom();
+  cout << g << endl;
   g.mergeSort(0, g.get_size());
-  cout << "size: " <<g.get_size() << endl;
+  cout << "size: " << g.get_size() << endl;
   cout << g << endl;
   return 0;
 }

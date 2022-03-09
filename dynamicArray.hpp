@@ -13,8 +13,48 @@ void dynamicArray<T>::grow()
 }
 
 template <typename T>
-void dynamicArray<T>::merge()
+void dynamicArray<T>::merge(int start, int mid, int end)
 {
+  dynamicArray<T> tmp(end-start);
+  int i = start;
+  int j = mid + 1;
+  while( (i <= mid) | (j < end) )
+  {
+    if( (i < mid) & (j < end) )
+    {
+      if(m_data[i] <= m_data[j])
+      {
+        tmp.add(m_data[i]);
+        i++;
+      }
+      else //m_data[i] > m_data[j]
+      {
+        tmp.add(m_data[j]);
+        j++;
+      }
+    }
+    else
+    {
+      if(i <= mid)
+      {
+        tmp.add(m_data[i]);
+        i++;
+      }
+      else
+      {
+        tmp.add(m_data[j]);
+        j++;
+      }
+    }
+  }
+  cout << "Start: " << start << "   Mid: " << mid << "   End: " << end << endl
+       << tmp << endl;
+  print();
+  cout << endl << endl;
+  for(int i = 0; i < (end - start); i++)
+  {
+    m_data[start + i] = tmp.get_data(start + i);
+  }
   return;
 }
 
@@ -43,9 +83,9 @@ void dynamicArray<T>::mergeSort(int start, int end)
     return;
 
   int half = (start + end) / 2;
-  cout << "Halfway point: "<< half << endl;
-  mergeSort(start, half);
-  mergeSort(half + 1, end);
+  mergeSort(start, half); //left side
+  mergeSort(half + 1, end); //right side
+  merge(start, half, end);
   return;
 }
 
