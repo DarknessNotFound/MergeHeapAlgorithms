@@ -62,6 +62,33 @@ void dynamicArray<T>::swap(int i, int j)
 }
 
 template <typename T>
+void dynamicArray<T>::heapify(int i)
+{
+  int lc = 2 * i + 1; //Left Child of i
+  int rc = 2 * i + 2; //Right Child of i
+
+  if( lc >= m_size) //Check against leaf
+    return;
+
+  if( (rc == m_size) && (m_data[i] < m_data[lc]) )
+    swap(i, lc);
+  else if ( (m_data[i] < m_data[lc]) || (m_data[i] < m_data[rc]) )
+  {
+    if(m_data[lc] > m_data[rc])
+    {
+      swap(i, lc);
+      heapify(lc);
+    }
+    else
+    {
+      swap(i, rc);
+      heapify(rc);
+    }
+  }
+  return;
+}
+
+template <typename T>
 void dynamicArray<T>::add(T x)
 {
   if(m_size == m_max)
@@ -75,31 +102,16 @@ void dynamicArray<T>::add(T x)
 template <typename T>
 void dynamicArray<T>::heapSort()
 {
-  for(int i = 0; i < m_size; i++)
-  {
-    int lci = 2*i + 1; //Left Child Index
-    int rci = 2*i + 2; //Right Child Index
-    if(lci >= m_size)
-      lci = i;
-    if(rci >= m_size)
-      rci = i;
-      
-    while( (m_data[i] < m_data[lci]) | (m_data[i] < m_data[rci]) )
-    {
-      if(m_data[lci] > m_data[rci])
-        swap(i, lci);
-      else
-        swap(i, rci);
-    }
-  }
+  int lc; //Left Child
+  int rc; //Right Child
+  for(int i = m_size - 1; i >= 0; i--)
+    heapify(i);
   return;
 }
 
 template <typename T>
 void dynamicArray<T>::mergeSort(int start, int size)
 {
-  cout << "Merge Sorting: " << start << ", " << size << endl;
-
   //Check against single element list
   if(size == 1)
     return;
@@ -112,9 +124,6 @@ void dynamicArray<T>::mergeSort(int start, int size)
   mergeSort(start, size / 2); //left side
   mergeSort(secStart, secSize); //right side
   merge(start, secStart, size);
-  cout << "Merged: ";
-  print();
-  cout << endl;
   return;
 }
 

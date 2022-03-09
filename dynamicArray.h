@@ -27,6 +27,8 @@ class dynamicArray
     void merge(int start, int mid, int end);
 
     void swap(int i, int j);
+
+    void heapify(int i);
   public:
 
     ///////////////////
