@@ -1,6 +1,7 @@
 #ifndef ALGORITHMTESTING_H
 #define ALGORITHMTESTING_H
 
+#include <chrono>
 #include "algorithmDict.h"
 #include "dynamicArray.h"
 
@@ -9,9 +10,9 @@ struct testResults
 {
   short m_algorithm;
   short m_fillType;
-  short m_size; //size n
+  int m_size; //size n
   int m_swaps;
-  float m_tmsec;
+  int m_tmsec; //in microseconds
 };
 
 ostream& operator << (ostream& os, const testResults& in);

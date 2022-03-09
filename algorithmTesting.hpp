@@ -26,6 +26,7 @@ testResults algoTesting::runTest(short algo, short fillType, int n)
       assert(false && "ERROR: Invalid fill type");
   }
 
+  auto start = std::chrono::high_resolution_clock::now();
   switch(algo)
   {
     case k_HEAPSORT:
@@ -39,9 +40,11 @@ testResults algoTesting::runTest(short algo, short fillType, int n)
     default:
       assert(false && "ERROR: Invalid Algorithm");
   }
+  auto stop = std::chrono::high_resolution_clock::now();
+  auto duration = duration_cast<std::chrono::microseconds>(stop - start);
 
   testRes.m_swaps = test.get_swaps();
-  testRes.m_tmsec = test.get_tmsec();
+  testRes.m_tmsec = duration.count();
 
   testHis.add(testRes);
   return testRes;
@@ -56,7 +59,7 @@ ostream& operator << (ostream& os, const testResults& in)
 {
   os << "\nTest on an " << getFillType(in.m_fillType) << " array of n="
      << in.m_size << " using the " << getAlgorithmName(in.m_algorithm)
-     << " algorithm." << endl << "\tTime (msec): " << in.m_tmsec
+     << " algorithm." << endl << "\tTime (microsec): " << in.m_tmsec
      << "\n\tSwaps: " << in.m_swaps << endl;
   return os;
 }
