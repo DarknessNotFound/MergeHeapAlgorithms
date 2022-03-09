@@ -6,11 +6,11 @@ using namespace std;
 
 int main()
 {
-  dynamicArray<int> g(10);
-  g.fillRandom();
+  dynamicArray<int> g(5);
+  g.fillAscending();
+  cout << g << "\tSize: " << g.get_size() << endl;
+  g.heapSort();
   cout << g << endl;
-  g.mergeSort(0, g.get_size());
-  cout << "size: " << g.get_size() << endl;
-  cout << g << endl;
+  cout << "Swaps: " << g.get_swaps() << endl;
   return 0;
 }

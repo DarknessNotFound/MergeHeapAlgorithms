@@ -25,6 +25,8 @@ class dynamicArray
     void grow();
 
     void merge(int start, int mid, int end);
+
+    void swap(int i, int j);
   public:
 
     ///////////////////
@@ -62,7 +64,7 @@ class dynamicArray
     void add(T x);
 
     void heapSort();
-    void mergeSort(int start, int end);
+    void mergeSort(int start, int size);
 
     void fillRandom();
     void fillAscending();
