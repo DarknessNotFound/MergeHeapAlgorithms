@@ -1,7 +1,8 @@
-testResults algoTesting::runTest(short algo, short fillType, int n)
+testResults algoTesting::runTest(short algo, short fillType, int n, string name)
 {
   dynamicArray<int>  test(n);
   testResults testRes;
+  ofstream file;
   testRes.m_algorithm = algo;
   testRes.m_fillType = fillType;
   testRes.m_size = n;
@@ -26,15 +27,22 @@ testResults algoTesting::runTest(short algo, short fillType, int n)
       assert(false && "ERROR: Invalid fill type");
   }
 
+  if(n <= 100)
+  {
+    file.open(name);
+    file << test << endl;
+    file.close();
+  }
+
   auto start = std::chrono::high_resolution_clock::now();
   switch(algo)
   {
-    case k_HEAPSORT:
-      test.heapSort();
-      break;
-
     case k_MERGESORT:
       test.mergeSort(0, test.get_size());
+      break;
+
+    case k_HEAPSORT:
+      test.heapSort();
       break;
 
     default:
@@ -42,6 +50,13 @@ testResults algoTesting::runTest(short algo, short fillType, int n)
   }
   auto stop = std::chrono::high_resolution_clock::now();
   auto duration = duration_cast<std::chrono::microseconds>(stop - start);
+
+  if(n <= 100)
+  {
+    file.open(name, std::fstream::app);
+    file << test << endl;
+    file.close();
+  }
 
   testRes.m_swaps = test.get_swaps();
   testRes.m_tmsec = duration.count();

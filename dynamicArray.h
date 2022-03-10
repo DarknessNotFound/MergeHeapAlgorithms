@@ -75,6 +75,13 @@ class dynamicArray
     ////   Print Data   ////
     ////////////////////////
 
+    void appendToFile(string name)
+    {
+      ofstream file;
+      file.open(name);
+      return;
+    };
+
     void printAttributes()
     {
       cout << "Max: " << get_max() << endl;

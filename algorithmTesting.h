@@ -21,9 +21,10 @@ class algoTesting
 {
   private:
     dynamicArray<testResults> testHis; //Record of Test History
+
   public:
 
-    testResults runTest(short algo, short fillType, int n);
+    testResults runTest(short algo, short fillType, int n, string name);
 
     void printTestHistory();
 };
